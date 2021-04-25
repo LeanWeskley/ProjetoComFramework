@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Com Framework</title>
+    <link rel="stylesheet" href="materialize/css/materialize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper container ">
+            <a href="index.html" class="brand-logo">Projeto</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="questao1.html" target="_blank">Questão 1</a></li>
+                <li><a href="questao2.html" target="_blank">Questão 2</a></li>
+                <li><a href="questao3.html" target="_blank">Questão 3</a></li>
+                <li><a href="questao4.html">Questão 4</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <form class="col s12" id="imc" name="imc" action="#">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="nome_paciente" type="text" class="validate">
+                    <label for="nome_paciente">Nome do Paciente</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="peso" type="number" class="validate">
+                    <label for="peso">Peso</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="altura" type="number" class="validate">
+                    <label for="altura">Altura</label>
+                </div>
+            </div>
+            <div class="row">
+                <a class="waves-effect waves-light btn">Limpar campos</a>
+                <a onclick="imc()" class="waves-effect waves-light btn">Obter resultado</a>
+            </div>
+        </form>
+    </div>
+    <br><br><br><br><br>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h6 class="white-text">Trabalho Avaliativo</h6>
+                    <p class="grey-text text-lighten-4">Um pequeno site usando o framework Materialize.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Link do repositório</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3"
+                                href="https://github.com/LeanWeskley/ProjetoComFramework" target="_blank">github</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2021 Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        function imc() {
+            var altura = document.imc.altura.value;
+            var peso = document.imc.peso.value;
+
+            var quadrado = (altura * altura);
+
+            var calculo = (peso / quadrado);
+
+            if (calculo < 18.5) {
+                alert("Você está magro com esse indice: " + calculo);
+            }
+            else if (calculo >= 18.5 && calculo < 24.9) {
+                alert("Você está normal com esse indice: " + calculo);
+            }
+
+            else if (calculo >= 25 && calculo < 29.9) {
+                alert("Você está com sobre peso com esse indice: " + calculo);
+            }
+            else if (calculo >= 30 && calculo < 39.9) {
+                alert("Você está com obesidade com esse indice: " + calculo);
+            }
+            else if (calculo > 40)
+                alert("Você estácom obesidade grave com esse indice: " + calculo);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="materialize/js/materialize.js"></script>
+</body>
+
+</html>
