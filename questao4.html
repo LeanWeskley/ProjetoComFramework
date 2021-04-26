@@ -22,8 +22,9 @@
             </ul>
         </div>
     </nav>
+    <br>
     <div class="row">
-        <form class="col s12" id="imc" name="imc" action="#">
+        <form class="col s12" id="imc" name="imc">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="nome_paciente" type="text" class="validate">
@@ -37,12 +38,12 @@
                 </div>
                 <div class="input-field col s6">
                     <input id="altura" type="number" class="validate">
-                    <label for="altura">Altura</label>
+                    <label for="altura">Altura (m)</label>
                 </div>
             </div>
             <div class="row">
                 <a class="waves-effect waves-light btn">Limpar campos</a>
-                <a onclick="imc()" class="waves-effect waves-light btn">Obter resultado</a>
+                <a onclick="calcular_imc()" class="waves-effect waves-light btn">Obter resultado</a>
             </div>
         </form>
     </div>
@@ -58,7 +59,8 @@
                     <h5 class="white-text">Link do repositório</h5>
                     <ul>
                         <li><a class="grey-text text-lighten-3"
-                                href="https://github.com/LeanWeskley/ProjetoComFramework" target="_blank">github</a>
+                                href="https://github.com/LeanWeskley/ProjetoComFramework" target="_blank"><img
+                                    src="img/git.png" width="15px" height="15px">GitHub</a>
                         </li>
                     </ul>
                 </div>
@@ -71,13 +73,11 @@
         </div>
     </footer>
     <script type="text/javascript">
-        function imc() {
+        function calcular_imc() {
             var altura = document.imc.altura.value;
             var peso = document.imc.peso.value;
 
-            var quadrado = (altura * altura);
-
-            var calculo = (peso / quadrado);
+            var calculo = peso / (altura * altura);
 
             if (calculo < 18.5) {
                 alert("Você está magro com esse indice: " + calculo);
@@ -85,15 +85,17 @@
             else if (calculo >= 18.5 && calculo < 24.9) {
                 alert("Você está normal com esse indice: " + calculo);
             }
-
             else if (calculo >= 25 && calculo < 29.9) {
                 alert("Você está com sobre peso com esse indice: " + calculo);
             }
-            else if (calculo >= 30 && calculo < 39.9) {
+            else if (calculo >= 30 && calculo < 34.9) {
+                alert("Você está com obesidade com esse indice: " + calculo);
+            }
+            else if (calculo >= 35 && calculo < 39.9) {
                 alert("Você está com obesidade com esse indice: " + calculo);
             }
             else if (calculo > 40)
-                alert("Você estácom obesidade grave com esse indice: " + calculo);
+                alert("Você está com obesidade grave com esse indice: " + calculo);
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
