@@ -23,7 +23,7 @@
         </div>
     </nav>
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" name="carne">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="nome_cliente" type="text" class="validate">
@@ -42,7 +42,7 @@
                     <label for="valor_produto">Valor do produto</label>
                 </div>
                 <div class="input-field col s3">
-                    <input id="quantidade" type="text" class="validate">
+                    <input id="quantidade" type="number" class="validate" min="1">
                     <label for="quantidade">Quantidade</label>
                 </div>
                 <div class="input-field col s5">
@@ -51,8 +51,7 @@
                 </div>
             </div>
             <div class="row">
-                <a class="waves-effect waves-light btn">Limpar campos</a>
-                <a onclick="media()" class="waves-effect waves-light btn">Obter resultados</a>
+                <a onclick="mostrar_carne()" class="waves-effect waves-light btn center-alihn">Gerar</a>
             </div>
         </form>
     </div>
@@ -82,7 +81,25 @@
         </div>
     </footer>
     <script type="text/javascript">
+        function mostrar_carne() {
+            var nome_cliente = document.carne.nome_cliente.value;
+            var nome_produto = document.carne.nome_produto.value;
+            var valor_produto = document.carne.valor_produto.value;
+            var quantidade = document.carne.quantidade.value;
+            var quantidade_parcelas = document.carne.quantidade_parcelas.value;
 
+            alert(
+                "--------------------------------------------------------------------------------\n" +
+                "                                    LOJA DE ELETRODOMÉSTICOS\n" +
+                "                                    CLIENTE: " + nome_cliente + "\n" +
+                "                                    PRODUTO: " + nome_produto + "\n" +
+                "                                    VALOR: " + valor_produto + "\n" +
+                "                                    QUANTIDADE: " + quantidade + "\n" +
+                "                                    PARCELAS: " + quantidade_parcelas
+                + "\n--------------------------------------------------------------------------------"
+            );
+
+        }
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
