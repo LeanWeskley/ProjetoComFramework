@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Com Framework</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="materialize/css/materialize.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,39 +24,60 @@
             </ul>
         </div>
     </nav>
-    <div class="row">
-        <form class="col s12" name="carne">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="nome_cliente" type="text" class="validate">
-                    <label for="nome_cliente">Nome do cliente</label>
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            <p class="lead">Se o pagamento for parcelado em 3 vezes deve ser dado um acréscimo de 5% no total a ser
+                pago. Se o parcelamento for em 6 vezes, o acréscimo será de 12%.</p>
+        </div>
+        <hr>
+
+        <div>
+            <form name="carne" id="carne">
+                <div class="form-row">
+                    <div class="col">
+                        <label>Cliente</label>
+                        <input type="text" class="form-control" id="nome_cliente" name="nome_cliente"
+                            placeholder="Nome do cliente." required>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="nome_produto" type="text" class="validate">
-                    <label for="nome_produto">Nome do produto</label>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label>Produto</label>
+                        <input type="text" class="form-control" id="nome_produto" name="nome_produto"
+                            placeholder="Nome do produto." required>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s4">
-                    <input id="valor_produto" type="text" class="validate">
-                    <label for="valor_produto">Valor do produto</label>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Valor</label>
+                        <input type="number" class="form-control" id="valor_produto" name="valor_produto" min="1"
+                            placeholder="Preço do produto" required>
+                    </div>
                 </div>
-                <div class="input-field col s3">
-                    <input id="quantidade" type="number" class="validate" min="1">
-                    <label for="quantidade">Quantidade</label>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Quantidade</label>
+                        <input type="number" class="form-control" id="quantidade_produto" name="quantidade_produto" min="1"
+                            placeholder="Quantidade em unidades" required>
+                    </div>
                 </div>
-                <div class="input-field col s5">
-                    <input id="quantidade_parcelas" type="number" min="1" max="6" class="validate">
-                    <label for="quantidade_parcelas">Quantidade de parcelas</label>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Parcelas</label>
+                        <input type="number" class="form-control" id="quantidade_parcelas" name="quantidade_parcelas"
+                            min="1" max="6" placeholder="Máx em 6x" required>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <a onclick="mostrar_carne()" class="waves-effect waves-light btn center-alihn">Gerar</a>
-            </div>
+        </div>
+        <button onclick="mostrar_carne()" class="btn btn-outline-primary float-right" type="button">Calcular</button>
         </form>
-    </div>
+        </div>
+        <br><br>
+        <p id="demo"></p>
+
+    </main>
     <br><br>
     <footer class="page-footer">
         <div class="container">
@@ -85,25 +108,66 @@
             var nome_cliente = document.carne.nome_cliente.value;
             var nome_produto = document.carne.nome_produto.value;
             var valor_produto = document.carne.valor_produto.value;
-            var quantidade = document.carne.quantidade.value;
+            var quantidade_produto = document.carne.quantidade_produto.value;
             var quantidade_parcelas = document.carne.quantidade_parcelas.value;
 
-            alert(
-                "--------------------------------------------------------------------------------\n" +
-                "                                    LOJA DE ELETRODOMÉSTICOS\n" +
-                "                                    CLIENTE: " + nome_cliente + "\n" +
-                "                                    PRODUTO: " + nome_produto + "\n" +
-                "                                    VALOR: " + valor_produto + "\n" +
-                "                                    QUANTIDADE: " + quantidade + "\n" +
-                "                                    PARCELAS: " + quantidade_parcelas
-                + "\n--------------------------------------------------------------------------------"
-            );
+            if(quantidade_parcelas = 1){
+                valor_produto / 1;
+            }else if(quantidade_parcelas = 2){
+                valor_produto / 2;
+            }else if(quantidade_parcelas = 3){
+                var aumento = (parseFloat(valor_produto) * 0.05);
+                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                novo_val / 3;
+                var perc_aum = " (+ 5%)";
+            }else if(quantidade_parcelas = 4){
+                var aumento = (parseFloat(valor_produto) * 0.05);
+                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                novo_val / 4;
+                var perc_aum = " (+ 5%)";
+            }else if(quantidade_parcelas = 5){
+                var aumento = (parseFloat(valor_produto) * 0.05);
+                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                novo_val / 5;
+                var perc_aum = " (+ 5%)";
+            }else if(quantidade_parcelas = 6){
+                var aumento = (parseFloat(valor_produto) * 0.12);
+                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                novo_val / 6;
+                var perc_aum = " (+ 12%)";
+            }
 
+            // if (quantidade_parcelas > 3) {
+            //     var aumento = (parseFloat(valor_produto) * 0.05);
+            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+            //     var perc_aum = " (+ 5%)";
+            // }
+            // else if (quantidade_parcelas = 6) {
+            //     var aumento = (parseFloat(valor_produto) * 0.12);
+            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+            //     var perc_aum = " (+ 12%)";
+            // }
+
+            document.getElementById("demo").innerHTML =
+                "---------------------------------------------- <b>LOJA DE ELETRODOMÉSTICOS</b> --------------------------------" +
+                "<br><b>CLIENTE:</b> " + nome_cliente.toUpperCase() +
+                "<br><b>PRODUTO:</b> " + nome_produto.toUpperCase() +
+                "<br><b>QUANTIDADE:</b> " + quantidade_produto.toUpperCase() +
+                "<br><b>VALOR:</b> " + parseFloat(valor_produto).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) +
+                "<br><b>PARCELA:</b> " + aumento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + perc_aum +
+                "<br>-------------------------------------------------------------------------------------------------------------------"
         }
+
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="materialize/js/materialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
