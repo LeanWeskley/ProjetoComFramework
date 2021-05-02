@@ -27,17 +27,17 @@
         <form class="col s12" id="imc" name="imc">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="nome_paciente" type="text" class="validate">
+                    <input id="nome_paciente" type="text" class="validate" name="nome_paciente">
                     <label for="nome_paciente">Nome do Paciente</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="peso" type="number" class="validate">
+                    <input id="peso" type="number" class="validate" name="peso">
                     <label for="peso">Peso</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="altura" type="number" class="validate">
+                    <input id="altura" type="number" class="validate" name="altura">
                     <label for="altura">Altura (m)</label>
                 </div>
             </div>
@@ -48,6 +48,9 @@
         </form>
     </div>
     <br><br><br><br><br>
+    <center>
+        <p id="imc_resultado"></p>
+    </center>
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -74,28 +77,44 @@
     </footer>
     <script type="text/javascript">
         function calcular_imc() {
+            var nome = document.imc.nome_paciente.value;
             var altura = document.imc.altura.value;
             var peso = document.imc.peso.value;
-
             var calculo = peso / (altura * altura);
 
             if (calculo < 18.5) {
-                alert("Você está magro com esse indice: " + calculo);
+                 var nivel_peso = "Peso abaixo";
+                 var problemas = "Maior probabilidade de anorexia.";
             }
             else if (calculo >= 18.5 && calculo < 24.9) {
-                alert("Você está normal com esse indice: " + calculo);
+                var nivel_peso = "Peso normal";
+                var problemas = "Sem problemas de saúde.";
             }
             else if (calculo >= 25 && calculo < 29.9) {
-                alert("Você está com sobre peso com esse indice: " + calculo);
+                var nivel_peso = "Pré-obesidade";
+                var problemas = "Predisposição a se tornar obeso";
             }
             else if (calculo >= 30 && calculo < 34.9) {
-                alert("Você está com obesidade com esse indice: " + calculo);
+                var nivel_peso = "Obesidade grau I";
+                var problemas = "Risco de diabetes tipo II, hipertensão, colesterol, cardiopatia.";
             }
             else if (calculo >= 35 && calculo < 39.9) {
-                alert("Você está com obesidade com esse indice: " + calculo);
+                var nivel_peso = "Obesidade grau II";
+                var problemas = "Aumento do risco das doenças associadas, risco de mortalidade aumenta em 50%.";
             }
-            else if (calculo > 40)
-                alert("Você está com obesidade grave com esse indice: " + calculo);
+            else if (calculo > 40) {
+                var nivel_peso = "Obesidade grau III";
+                var problemas = "Risco de mortalidade aumenta em 90% devido as doenças associadas.";
+            }
+            document.getElementById("imc_resultado").innerHTML =
+                "---------------------------------------------- <b>RESULTADO - IMC</b> ----------------------------------------------" +
+                "<br><b>PACIENTE:</b> " + nome.toUpperCase() +
+                "<br><b>PESO:</b> " + peso +
+                "<br><b>ALTURA:</b> " + altura +
+                "<br><b>IMC:</b> " + calculo.toFixed(2) +
+                "<br><b>Olá " + nome +", você está no nível de obesidade: " + nivel_peso +".<br> Com este nível de IMC você está propenso a apresentar os seguintes problemas de saúde:<br> " + problemas + "</b> " +
+                "<br>------------------------------------------------------------------------------------------------------------------"
+
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"

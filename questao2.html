@@ -59,8 +59,8 @@
                 <div class="form-row">
                     <div class="col">
                         <label>Quantidade</label>
-                        <input type="number" class="form-control" id="quantidade_produto" name="quantidade_produto" min="1"
-                            placeholder="Quantidade em unidades" required>
+                        <input type="number" class="form-control" id="quantidade_produto" name="quantidade_produto"
+                            min="1" placeholder="Quantidade em unidades" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -110,33 +110,68 @@
             var valor_produto = document.carne.valor_produto.value;
             var quantidade_produto = document.carne.quantidade_produto.value;
             var quantidade_parcelas = document.carne.quantidade_parcelas.value;
+            var aumento;
+            var novo_val;
+            var perc_aum = "";
+            // if (quantidade_parcelas = 1) {
+            //     valor_produto / 1;
+            // } else if (quantidade_parcelas = 2) {
+            //     valor_produto / 2;
+            // } else if (quantidade_parcelas = 3) {
+            //     aumento = (parseFloat(valor_produto) * 0.05);
+            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+            //     novo_val / 3;
+            //     var perc_aum = " (+ 5%)";
+            // } else if (quantidade_parcelas = 4) {
+            //     aumento = (parseFloat(valor_produto) * 0.05);
+            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+            //     novo_val / 4;
+            //     var perc_aum = " (+ 5%)";
+            // } else if (quantidade_parcelas = 5) {
+            //     aumento = (parseFloat(valor_produto) * 0.05);
+            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+            //     novo_val / 5;
+            //     var perc_aum = " (+ 5%)";
+            // } else if (quantidade_parcelas = 6) {
+            //     aumento = (parseFloat(valor_produto) * 0.12);
+            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+            //     novo_val / 6;
+            //     var perc_aum = " (+ 12%)";
+            // }
 
-            if(quantidade_parcelas = 1){
-                valor_produto / 1;
-            }else if(quantidade_parcelas = 2){
-                valor_produto / 2;
-            }else if(quantidade_parcelas = 3){
-                var aumento = (parseFloat(valor_produto) * 0.05);
-                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-                novo_val / 3;
-                var perc_aum = " (+ 5%)";
-            }else if(quantidade_parcelas = 4){
-                var aumento = (parseFloat(valor_produto) * 0.05);
-                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-                novo_val / 4;
-                var perc_aum = " (+ 5%)";
-            }else if(quantidade_parcelas = 5){
-                var aumento = (parseFloat(valor_produto) * 0.05);
-                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-                novo_val / 5;
-                var perc_aum = " (+ 5%)";
-            }else if(quantidade_parcelas = 6){
-                var aumento = (parseFloat(valor_produto) * 0.12);
-                var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-                novo_val / 6;
-                var perc_aum = " (+ 12%)";
+            switch (parseInt(quantidade_parcelas)) {
+                case 1:
+                    novo_val = valor_produto;
+                    break;
+                case 2:
+                    novo_val = valor_produto / 2;
+                    break;
+                case 3:
+                    aumento = (parseFloat(valor_produto) * 0.05);
+                    novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                    novo_val = novo_val / 3;
+                    perc_aum = " (+ 5%)";
+                    break;
+                case 4:
+                    aumento = (parseFloat(valor_produto) * 0.05);
+                    novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                    novo_val = novo_val / 4;
+                    perc_aum = " (+ 5%)";
+                    break;
+                case 5:
+                    aumento = (parseFloat(valor_produto) * 0.05);
+                    novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                    novo_val = novo_val / 5;
+                    perc_aum = " (+ 5%)";
+                    break;
+                case 6:
+                    aumento = (parseFloat(valor_produto) * 0.12);
+                    novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
+                    novo_val = novo_val / 6;
+                    perc_aum = " (+ 12%)";
+                    break;
+
             }
-
             // if (quantidade_parcelas > 3) {
             //     var aumento = (parseFloat(valor_produto) * 0.05);
             //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
@@ -154,10 +189,9 @@
                 "<br><b>PRODUTO:</b> " + nome_produto.toUpperCase() +
                 "<br><b>QUANTIDADE:</b> " + quantidade_produto.toUpperCase() +
                 "<br><b>VALOR:</b> " + parseFloat(valor_produto).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) +
-                "<br><b>PARCELA:</b> " + aumento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + perc_aum +
+                "<br><b>PARCELA:</b> " + parseFloat(novo_val).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + perc_aum +
                 "<br>-------------------------------------------------------------------------------------------------------------------"
         }
-
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
