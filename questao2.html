@@ -113,32 +113,7 @@
             var aumento;
             var novo_val;
             var perc_aum = "";
-            // if (quantidade_parcelas = 1) {
-            //     valor_produto / 1;
-            // } else if (quantidade_parcelas = 2) {
-            //     valor_produto / 2;
-            // } else if (quantidade_parcelas = 3) {
-            //     aumento = (parseFloat(valor_produto) * 0.05);
-            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-            //     novo_val / 3;
-            //     var perc_aum = " (+ 5%)";
-            // } else if (quantidade_parcelas = 4) {
-            //     aumento = (parseFloat(valor_produto) * 0.05);
-            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-            //     novo_val / 4;
-            //     var perc_aum = " (+ 5%)";
-            // } else if (quantidade_parcelas = 5) {
-            //     aumento = (parseFloat(valor_produto) * 0.05);
-            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-            //     novo_val / 5;
-            //     var perc_aum = " (+ 5%)";
-            // } else if (quantidade_parcelas = 6) {
-            //     aumento = (parseFloat(valor_produto) * 0.12);
-            //     var novo_val = (parseFloat(valor_produto) + parseFloat(aumento));
-            //     novo_val / 6;
-            //     var perc_aum = " (+ 12%)";
-            // }
-
+            valor_produto = quantidade_produto * valor_produto;
             switch (parseInt(quantidade_parcelas)) {
                 case 1:
                     novo_val = valor_produto;
